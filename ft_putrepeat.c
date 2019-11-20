@@ -6,21 +6,21 @@
 /*   By: alilin <alilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 14:05:34 by alilin            #+#    #+#             */
-/*   Updated: 2019/11/15 17:12:11 by alilin           ###   ########.fr       */
+/*   Updated: 2019/11/18 14:01:09 by alilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_putrepeat(int i, char c, int len)
+int	ft_putrepeat(char c, int len)
 {
-	int	j;
+	int	i;
 
-	j = 0;
-	while(j < len)
+	i = 0;
+	while (i < len)
 	{
 		write(1, &c, 1);
-		j++;
+		i++;
 	}
-	return (i + j);
+	return (i);
 }

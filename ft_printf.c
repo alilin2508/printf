@@ -6,7 +6,7 @@
 /*   By: alilin <alilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:22:01 by alilin            #+#    #+#             */
-/*   Updated: 2019/11/15 13:58:14 by alilin           ###   ########.fr       */
+/*   Updated: 2019/11/19 13:17:09 by alilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,28 @@
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	int		i;
+	int		j;
+	int		k;
 	t_opt	f;
 
-	i = 0;
+	g_i = 0;
+	j = 0;
+	g_len = 0;
 	va_start(ap, format);
-	while (format[i])
+	while (format[g_i])
 	{
-		if (format[i] == '%')
+		if (format[g_i] == '%')
 		{
-			f.frmt = (char *)&format[++i];
-			i += ft_setflag(&f, ap);
-			ft_putd(&f, ap);
+			k = 0;
+			f.frmt = (char *)&format[++g_i];
+			k = ft_setflag(&f, ap);
+			g_i += k;
+			g_len += (k + 1);
+			j += ft_putstuff(&f, ap);
 		}
 		else
-		{
-			ft_putchar(format[i]);
-			i++;
-		}
+			ft_putchar(format[g_i++]);
 	}
 	va_end(ap);
-	return (0);
+	return (g_i + j - g_len);
 }

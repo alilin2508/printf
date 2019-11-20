@@ -6,29 +6,26 @@
 /*   By: alilin <alilin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 14:11:18 by alilin            #+#    #+#             */
-/*   Updated: 2019/11/15 15:04:51 by alilin           ###   ########.fr       */
+/*   Updated: 2019/11/18 17:17:06 by alilin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
 
-int	ft_putnbr(int n, int *i)
+int	ft_putnbr(long n, int *i)
 {
-	long	nb;
-
-	nb = n;
-	if (nb < 0)
+	if (n < 0)
 	{
-		nb = nb * -1;
+		n = n * -1;
 	}
-	if (nb >= 10)
+	if (n >= 10)
 	{
-		ft_putnbr(nb / 10, i);
-		ft_putnbr(nb % 10, i);
+		ft_putnbr(n / 10, i);
+		ft_putnbr(n % 10, i);
 	}
 	else
 	{
-		ft_putchar(nb + '0');
+		ft_putchar(n + '0');
 		(*i)++;
 	}
 	return (*i);
